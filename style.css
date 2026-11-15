@@ -1,128 +1,497 @@
+/* ---------- Pixel-Schrift (Datei liegt im Ordner "fonts") ---------- */
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("fonts/PressStart2P-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* ---------- Farben und Grundwerte ---------- */
+:root {
+  --bg: #f5efe3;
+  --ink: #151515;
+  --accent: #ff5a36;
+  --sky: #cfe0f5;
+  --butter: #ffe27a;
+  --pink: #f7c9d4;
+  --line: 1.5px solid #151515;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  color: #222222;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
   line-height: 1.6;
 }
 
-header {
-  background: #1e293b;
-  color: white;
-  padding: 20px 40px;
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Kopfzeile ---------- */
+.site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 22px 40px;
+  border-bottom: var(--line);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-nav a {
-  color: white;
+.logo {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 14px;
+  color: var(--ink);
   text-decoration: none;
-  margin-left: 20px;
 }
 
-nav a:hover {
+.site-header nav a {
+  color: var(--ink);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 16px;
+}
+
+.site-header nav a:hover {
   text-decoration: underline;
 }
 
-section {
+/* ---------- Hauptbereich ---------- */
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 40px 80px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.eye {
+  color: var(--ink);
+  margin-bottom: 22px;
+  width: 90px;
+  height: auto;
+}
+
+.eye .pupil {
+  fill: var(--accent);
+}
+
+.eye .shine {
+  fill: var(--bg);
+}
+
+.label {
+  margin: 0 0 14px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pixel {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-weight: normal;
+  font-size: clamp(20px, 3.8vw, 36px);
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+.lead {
+  max-width: 520px;
+  margin: 0 0 32px;
+  font-size: 20px;
+}
+
+.hint {
+  margin: 14px 0 0;
+  font-size: 14px;
+}
+
+.hero-art .mock {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ---------- Buttons (alle gleich) ---------- */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--ink);
+  border: var(--line);
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ---------- Laufband ---------- */
+.ticker {
+  overflow: hidden;
+  background: var(--butter);
+  border-top: var(--line);
+  border-bottom: var(--line);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+}
+
+.ticker-group span {
+  padding: 14px 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Abschnitte ---------- */
+.band {
+  border-bottom: var(--line);
+}
+
+.band-pink {
+  background: var(--pink);
+}
+
+.band-dark {
+  background: var(--ink);
+  color: var(--bg);
+  border-bottom: none;
+}
+
+.wrap {
   max-width: 900px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 70px 40px;
 }
 
-#hero {
-  text-align: center;
+.wrap h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 28px;
 }
 
-#hero h2 {
-  font-size: 36px;
+.wrap h2.pixel {
+  font-size: clamp(20px, 4vw, 34px);
+  line-height: 1.4;
 }
 
-#hero a {
-  display: inline-block;
-  background: #16a34a;
-  color: white;
-  padding: 14px 28px;
-  border-radius: 8px;
-  text-decoration: none;
+.subhead {
+  margin: 48px 0 6px;
+  font-size: 22px;
+}
+
+.note-top {
+  margin: 0 0 24px;
+}
+
+.lead-left {
+  max-width: 560px;
+  margin: 0 0 32px;
+}
+
+/* ---------- Kleine Schilder ---------- */
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chips li {
+  border: var(--line);
+  padding: 8px 16px;
   font-weight: bold;
+  background: var(--sky);
 }
 
-#hero a:hover {
-  background: #1d4ed8;
+.chips li:nth-child(3n+2) {
+  background: var(--butter);
 }
 
-footer {
-  background: #1e293b;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}@media (max-width: 700px) {
-  header {
-    flex-direction: column;
-    gap: 12px;
-    padding: 20px;
-  }
-
-  nav a {
-    margin: 0 10px;
-  }
-
-  section {
-    padding: 40px 20px;
-  }
-
-  #hero h2 {
-    font-size: 26px;
-  }
-}#services h2,
-#why h2 {
-  text-align: center;
+.chips li:nth-child(3n) {
+  background: var(--pink);
 }
 
+/* ---------- Karten ---------- */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
 }
 
 .card {
-  background: #f1f5f9;
-  padding: 24px;
-  border-radius: 12px;
+  background: var(--sky);
+  border: var(--line);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 26px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink);
+}
+
+.card-strong {
+  background: var(--butter);
 }
 
 .card h3 {
-  margin-top: 0;
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card ul {
+  margin: 16px 0 0;
+  padding-left: 20px;
+}
+
+.card li {
+  margin-bottom: 6px;
+}
+
+.card-wide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: #ffffff;
 }
 
 .price {
   font-weight: bold;
-  color: #2563eb;
-}#contacts {
-  text-align: center;
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 4px;
 }
 
-.btn {
-  display: inline-block;
-  background: #2563eb;
-  color: white;
-  padding: 14px 28px;
-  border-radius: 8px;
-  text-decoration: none;
+.price span {
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.fineprint {
+  margin: 28px 0 0;
+  font-size: 14px;
+}
+
+/* ---------- Ablauf ---------- */
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 22px 60px;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--bg);
+  border: var(--line);
+  box-shadow: 3px 3px 0 var(--ink);
+  text-align: center;
+  line-height: 37px;
   font-weight: bold;
 }
 
-.btn:hover {
-  background: #1d4ed8;
+/* ---------- Projekte ---------- */
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.frame {
+  background: #ffffff;
+  border: var(--line);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.frame-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--sky);
+  border-bottom: var(--line);
+}
+
+.frame-bar i {
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+}
+
+.frame-bar i:nth-child(1) { background: var(--accent); }
+.frame-bar i:nth-child(2) { background: var(--butter); }
+
+.frame-body {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.frame-body .pixel {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ---------- Kontakt (dunkel) ---------- */
+.band-dark .btn {
+  border-color: var(--bg);
+}
+
+.band-dark .btn:hover {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* ---------- Fußzeile ---------- */
+.site-footer {
+  background: var(--ink);
+  color: var(--bg);
+  border-top: 1px solid #444444;
+  padding: 24px 40px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ---------- Leiste nur fürs Handy ---------- */
+.sticky-cta {
+  display: none;
+}
+
+/* ---------- Handy ---------- */
+@media (max-width: 760px) {
+  body {
+    font-size: 17px;
+    padding-bottom: 76px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 20px;
+  }
+
+  .site-header nav a {
+    margin: 0 10px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 44px 20px 56px;
+    gap: 36px;
+  }
+
+  .wrap {
+    padding: 50px 20px;
+  }
+
+  .wrap h2 {
+    font-size: 26px;
+  }
+
+  .card-wide {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    display: block;
+    text-align: center;
+  }
+
+  .sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 16px;
+    background: var(--bg);
+    border-top: var(--line);
+    z-index: 10;
+  }
+
+  .sticky-cta .btn {
+    padding: 12px 20px;
+  }
+}
+
+/* ---------- Wer keine Bewegung möchte ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-art .mock,
+  .ticker-track {
+    animation: none;
+  }
+
+  .card {
+    transition: none;
+  }
 }
